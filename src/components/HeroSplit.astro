@@ -1,7 +1,11 @@
+---
+const base = Astro.base;
+---
+
 <div class="grid grid-cols-1 md:grid-cols-2 h-[70vh] min-h-[500px]">
-  <a href="/origen-guainia" class="relative overflow-hidden group">
+  <a href={`${base}/origen-guainia`} class="relative overflow-hidden group">
     <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-         style="background-image: url('/images/placeholder.svg');">
+         style={`background-image: url('${base}/images/placeholder.svg');`}>
       <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition"></div>
     </div>
     <div class="relative h-full flex flex-col justify-end p-8 md:p-12">
@@ -11,9 +15,9 @@
       <p class="text-sm text-gray-300 max-w-md">Extracción gravimétrica sin mercurio. Restauración vegetal en ciclo cerrado.</p>
     </div>
   </a>
-  <a href="/origen-marmato" class="relative overflow-hidden group">
+  <a href={`${base}/origen-marmato`} class="relative overflow-hidden group">
     <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-         style="background-image: url('/images/placeholder.svg');">
+         style={`background-image: url('${base}/images/placeholder.svg');`}>
       <div class="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition"></div>
     </div>
     <div class="relative h-full flex flex-col justify-end p-8 md:p-12">

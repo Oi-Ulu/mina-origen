@@ -2,17 +2,17 @@
 export interface Props {
   origen: 'guainia' | 'marmato';
 }
-
 const { origen } = Astro.props;
+const base = Astro.base;
 
 const images = origen === 'guainia' 
   ? [
-      { src: '/images/placeholder.svg', title: 'Extracción Selectiva', desc: 'Método manual con batea. Cero mercurio.' },
-      { src: '/images/placeholder.svg', title: 'Restauración en Curso', desc: 'Siembra de vetiver y especies nativas.' },
+      { src: `${base}/images/placeholder.svg`, title: 'Extracción Selectiva', desc: 'Método manual con batea. Cero mercurio.' },
+      { src: `${base}/images/placeholder.svg`, title: 'Restauración en Curso', desc: 'Siembra de vetiver y especies nativas.' },
     ]
   : [
-      { src: '/images/placeholder.svg', title: 'Socavón Artesanal', desc: 'Ventilación natural, arranque selectivo.' },
-      { src: '/images/placeholder.svg', title: 'Planta Gravimétrica', desc: 'Concentración sin cianuro.' },
+      { src: `${base}/images/placeholder.svg`, title: 'Socavón Artesanal', desc: 'Ventilación natural, arranque selectivo.' },
+      { src: `${base}/images/placeholder.svg`, title: 'Planta Gravimétrica', desc: 'Concentración sin cianuro.' },
     ];
 ---
 

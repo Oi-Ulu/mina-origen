@@ -1,11 +1,12 @@
 ---
 import LayoutBase from '../layouts/LayoutBase.astro';
 import GreenCarousel from '../components/GreenCarousel.astro';
+const base = Astro.base;
 ---
 
 <LayoutBase title="Marmato" description="Plata y oro de veta andina con minería responsable.">
   <div class="relative h-[40vh] min-h-[300px] bg-cover bg-center flex items-end"
-       style="background-image: url('/images/marmato/hero.webp');">
+       style={`background-image: url('${base}/images/placeholder.svg');`}>
     <div class="absolute inset-0 bg-black/50"></div>
     <div class="relative max-w-7xl mx-auto px-4 pb-8 w-full">
       <h1 class="font-serif text-4xl md:text-6xl text-white">Marmato</h1>

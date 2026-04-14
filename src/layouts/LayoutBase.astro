@@ -1,10 +1,12 @@
 ---
+import '../styles/global.css';
 export interface Props {
   title: string;
   description?: string;
 }
 
 const { title, description = "Minería de origen sostenible en Guainía y Marmato" } = Astro.props;
+const base = Astro.base;
 ---
 
 <!doctype html>
@@ -14,16 +16,17 @@ const { title, description = "Minería de origen sostenible en Guainía y Marmat
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title} | Mina Origen</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
+    <!-- Tailwind CSS (se inyecta automáticamente vía PostCSS) -->
   </head>
   <body class="bg-trust text-gray-200 font-sans antialiased">
     <header class="border-b border-stone-700 py-4 px-4 md:px-8">
       <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <a href="/" class="font-serif text-2xl tracking-wide text-guinia-gold-matte">Mina<span class="text-marmato-silver-vein">Origen</span></a>
+        <a href={`${base}/`} class="font-serif text-2xl tracking-wide text-guinia-gold-matte">Mina<span class="text-marmato-silver-vein">Origen</span></a>
         <nav class="space-x-6 text-sm">
-          <a href="/origen-guainia" class="hover:text-guinia-gold-matte transition">Guainía</a>
-          <a href="/origen-marmato" class="hover:text-marmato-silver-vein transition">Marmato</a>
-          <a href="/contacto" class="hover:text-white transition">Contacto</a>
+          <a href={`${base}/origen-guainia`} class="hover:text-guinia-gold-matte transition">Guainía</a>
+          <a href={`${base}/origen-marmato`} class="hover:text-marmato-silver-vein transition">Marmato</a>
+          <a href={`${base}/contacto`} class="hover:text-white transition">Contacto</a>
         </nav>
       </div>
     </header>
