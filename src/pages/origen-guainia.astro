@@ -1,0 +1,33 @@
+---
+import LayoutBase from '../layouts/LayoutBase.astro';
+import GreenCarousel from '../components/GreenCarousel.astro';
+---
+
+<LayoutBase title="Guainía" description="Oro aluvial amazónico con procesos sostenibles.">
+  <div class="relative h-[40vh] min-h-[300px] bg-cover bg-center flex items-end"
+       style="background-image: url('/images/guainia/hero.webp');">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative max-w-7xl mx-auto px-4 pb-8 w-full">
+      <h1 class="font-serif text-4xl md:text-6xl text-white">Guainía</h1>
+      <p class="text-xl text-gray-200">Oro Aluvial Amazónico</p>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 py-12">
+    <div class="prose prose-invert prose-lg max-w-none">
+      <p>En el corazón del escudo guayanés, donde el río Inírida serpentea entre paisajes ancestrales, recuperamos oro aluvial mediante métodos exclusivamente gravimétricos. No utilizamos mercurio ni cianuro en nuestros frentes de trabajo.</p>
+      <p>Nuestra operación se encuentra dentro del título minero legalmente constituido, y aplicamos un riguroso plan de manejo ambiental que incluye la restauración progresiva de las áreas intervenidas.</p>
+      <h3>Proceso Verde</h3>
+      <ul>
+        <li><strong>Extracción selectiva:</strong> Bateo manual y canalones. Solo removemos material donde hay concentración natural.</li>
+        <li><strong>Agua en circuito cerrado:</strong> El agua usada en el lavado se sedimenta en pozas con plantas acuáticas nativas y retorna al cauce sin turbidez.</li>
+        <li><strong>Restauración activa:</strong> Cada frente explotado es reforestado con especies nativas (vetiver, yopo, ceiba) en un plazo máximo de 6 meses.</li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="max-w-7xl mx-auto px-4 py-8">
+    <h2 class="font-serif text-3xl mb-8">Nuestro proceso en imágenes</h2>
+    <GreenCarousel origen="guainia" />
+  </section>
+</LayoutBase>

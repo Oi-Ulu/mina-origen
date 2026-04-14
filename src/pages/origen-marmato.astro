@@ -1,0 +1,33 @@
+---
+import LayoutBase from '../layouts/LayoutBase.astro';
+import GreenCarousel from '../components/GreenCarousel.astro';
+---
+
+<LayoutBase title="Marmato" description="Plata y oro de veta andina con minería responsable.">
+  <div class="relative h-[40vh] min-h-[300px] bg-cover bg-center flex items-end"
+       style="background-image: url('/images/marmato/hero.webp');">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative max-w-7xl mx-auto px-4 pb-8 w-full">
+      <h1 class="font-serif text-4xl md:text-6xl text-white">Marmato</h1>
+      <p class="text-xl text-gray-200">Plata y Oro de Veta Andina</p>
+    </div>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-4 py-12">
+    <div class="prose prose-invert prose-lg max-w-none">
+      <p>En las estribaciones de la Cordillera Central, a más de 1,500 metros de altura, seguimos vetas de cuarzo aurífero y argentífero con técnicas de arranque selectivo y mínima mecanización.</p>
+      <p>Nuestra planta de beneficio utiliza molienda local y concentración gravimétrica, sin reactivos químicos agresivos. Los residuos de roca se emplean en la rehabilitación de caminos veredales o se depositan en terrazas revegetadas.</p>
+      <h3>Proceso Verde</h3>
+      <ul>
+        <li><strong>Socavón seguro:</strong> Extracción manual con martillo neumático, ventilación natural.</li>
+        <li><strong>Manejo de estériles:</strong> Reutilización en infraestructura local y terrazas verdes.</li>
+        <li><strong>Reforestación altoandina:</strong> Siembra anual de frailejones y encenillos en áreas aledañas.</li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="max-w-7xl mx-auto px-4 py-8">
+    <h2 class="font-serif text-3xl mb-8">Nuestro proceso en imágenes</h2>
+    <GreenCarousel origen="marmato" />
+  </section>
+</LayoutBase>
