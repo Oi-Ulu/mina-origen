@@ -1,0 +1,37 @@
+---
+import { contextTheme } from '../../lib/themes.js';
+
+export interface Props {
+  material: {
+    nombre: string;
+    tipo: string;
+    imagenUrl: string;
+    origen: string;
+  };
+  territorioId: 'guainia' | 'marmato';
+  tema: 'marmato' | 'guainia';
+}
+const { material, territorioId, tema } = Astro.props;
+const baseUrl = import.meta.env.BASE_URL;
+const theme = contextTheme[tema];
+const imgSrc = material.imagenUrl.startsWith('/') ? material.imagenUrl : `${baseUrl}${material.imagenUrl}`;
+const procesoLink = `${baseUrl}territorio/${territorioId}/proceso`;
+const territorioLink = `${baseUrl}territorio/${territorioId}/`;
+---
+
+<div class="bg-stone-900 rounded-lg overflow-hidden border border-stone-800 hover:border-stone-700 transition-all">
+  <img src={imgSrc} alt={material.nombre} class="w-full h-48 object-cover" />
+  <div class="p-4">
+    <h3 class={`text-xl font-bold ${theme.textTitle} mb-1`}>{material.nombre}</h3>
+    <p class="text-sm text-gray-400 mb-2">{material.tipo}</p>
+    <p class="text-xs text-gray-500 mb-3">Origen: {material.origen}</p>
+    <div class="flex gap-3">
+      <a href={procesoLink} class="text-sm bg-stone-800 hover:bg-stone-700 text-gray-300 px-3 py-1 rounded transition-colors">
+        Ver proceso
+      </a>
+      <a href={territorioLink} class="text-sm border border-stone-700 hover:bg-stone-800 text-gray-300 px-3 py-1 rounded transition-colors">
+        Ver territorio
+      </a>
+    </div>
+  </div>
+</div>

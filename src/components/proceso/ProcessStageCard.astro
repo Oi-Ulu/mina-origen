@@ -1,0 +1,25 @@
+---
+import { processCardTheme } from '../../lib/themes.js';
+
+export interface Props {
+  etapa: string;
+  descripcion: string;
+  imagenUrl?: string;
+  tema: 'marmato' | 'guainia';
+}
+const { etapa, descripcion, imagenUrl, tema } = Astro.props;
+const theme = processCardTheme[tema];
+
+// Clase de borde específica según el territorio
+const borderClass = tema === 'marmato' 
+  ? 'border-l-2 border-marmato-clay/60' 
+  : 'border-t-2 border-guainia-slow-water/60';
+---
+
+<div class={`${theme.cardBg} rounded-lg overflow-hidden ${borderClass} p-4`}>
+  {imagenUrl && (
+    <img src={imagenUrl} alt={etapa} class="w-full h-32 object-cover rounded mb-3" />
+  )}
+  <h4 class={`text-lg font-bold ${theme.titleColor} mb-2`}>{etapa}</h4>
+  <p class="text-gray-700 text-sm">{descripcion}</p>
+</div>

@@ -1,0 +1,12 @@
+---
+export interface Props {
+  territorioId: 'guainia' | 'marmato';
+}
+const { territorioId } = Astro.props;
+---
+
+<div class="bg-stone-800/50 rounded-lg p-6 text-center border border-stone-700">
+  <div class="text-4xl mb-4">🗺️</div>
+  <p class="text-gray-300">Mapa interactivo disponible próximamente</p>
+  <p class="text-sm text-gray-500 mt-2">Territorio: {territorioId}</p>
+</div>

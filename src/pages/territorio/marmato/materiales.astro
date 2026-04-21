@@ -1,0 +1,19 @@
+---
+import TerritoryLayout from '../../../components/territorio/TerritoryLayout.astro';
+import MaterialGallery from '../../../components/materiales/MaterialGallery.astro';
+---
+
+<TerritoryLayout territorioId="marmato" active="materiales">
+  <div>
+    <h2 class="text-2xl font-bold text-marmato-clay mb-6">Materiales y minerales</h2>
+    <MaterialGallery 
+      materiales={[
+        {nombre: "Oro de veta", tipo: "Mineral primario", imagenUrl: "/mina-origen/images/marmato/materiales/material-oro-veta.jpg", origen: "Marmato"},
+        {nombre: "Plata nativa", tipo: "Mineral secundario", imagenUrl: "/mina-origen/images/marmato/materiales/material-plata.jpg", origen: "Marmato"},
+        {nombre: "Concentrado de oro", tipo: "Producto intermedio", imagenUrl: "/mina-origen/images/marmato/materiales/concentrado-oro.jpg", origen: "Marmato"}
+      ]}
+      tema="marmato"
+      territorioId="marmato"
+    />
+  </div>
+</TerritoryLayout>

@@ -1,0 +1,26 @@
+---
+// Layout contenedor para las tres vistas de un territorio.
+// Props:
+// - territorioId: 'guainia' | 'marmato'
+// - active: 'territorio' | 'proceso' | 'materiales'
+// - slot: contenido de la página
+import LayoutBase from '../../layouts/LayoutBase.astro';
+import TerritoryNav from './TerritoryNav.astro';
+import { navActiveClass } from '../../lib/themes.js';
+
+export interface Props {
+  territorioId: 'guainia' | 'marmato';
+  active: 'territorio' | 'proceso' | 'materiales';
+}
+const { territorioId, active } = Astro.props;
+
+// Obtener la clase activa según el territorio
+const activeClass = navActiveClass[territorioId];
+---
+
+<LayoutBase title={`${territorioId === 'marmato' ? 'Marmato' : 'Guainía'} - Mina Origen`}>
+  <main class="max-w-7xl mx-auto px-4 py-8">
+    <TerritoryNav territorioId={territorioId} active={active} activeClass={activeClass} />
+    <slot />
+  </main>
+</LayoutBase>

@@ -1,0 +1,42 @@
+---
+import TerritoryLayout from '../../../components/territorio/TerritoryLayout.astro';
+import ProcessFlow from '../../../components/proceso/ProcessFlow.astro';
+import ProcessStageCard from '../../../components/proceso/ProcessStageCard.astro';
+---
+
+<TerritoryLayout territorioId="guainia" active="proceso">
+  <div class="space-y-8">
+    <h2 class="text-2xl font-bold text-guainia-deep-water">Proceso productivo</h2>
+    <ProcessFlow etapas={["Prospección", "Extracción aluvial", "Clasificación", "Concentración gravimétrica", "Refinado artesanal"]} />
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+      <ProcessStageCard 
+        etapa="Prospección"
+        descripcion="Identificación de zonas con potencial aurífero mediante muestreo de sedimentos y geofísica somera."
+        imagenUrl="/mina-origen/images/guainia/proceso/etapa-1.jpg"
+        tema="guainia"
+      />
+      <ProcessStageCard 
+        etapa="Extracción aluvial"
+        descripcion="Extracción manual de gravas auríferas en riberas, utilizando bombas de succión de baja presión."
+        imagenUrl="/mina-origen/images/guainia/proceso/etapa-2.jpg"
+        tema="guainia"
+      />
+      <ProcessStageCard 
+        etapa="Clasificación"
+        descripcion="Cribado y lavado para separar partículas gruesas (estériles) de material fino con oro."
+        tema="guainia"
+      />
+      <ProcessStageCard 
+        etapa="Concentración gravimétrica"
+        descripcion="Uso de canaletas y mesas vibratorias para concentrar el oro por diferencia de densidad. Sin mercurio."
+        tema="guainia"
+      />
+      <ProcessStageCard 
+        etapa="Refinado artesanal"
+        descripcion="Fusión del concentrado con bórax para obtener oro puro (contenido > 95%)."
+        tema="guainia"
+      />
+    </div>
+  </div>
+</TerritoryLayout>

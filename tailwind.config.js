@@ -4,20 +4,27 @@ export default {
   theme: {
     extend: {
       colors: {
-        'guainia': {
-          'water': '#2F5A4B',
-          'gold-matte': '#A68A56',
-          'sand': '#D4C4A8',
+        // ===== MARMATO (seco, oxidado, cortes geológicos) =====
+        marmato: {
+          'base-rock': '#8C857A',   // Roca meteorizada dominante
+          'clay': '#A78F6B',        // Arcilla, acento principal
+          'oxide': '#7A5C3E',       // Oxidación férrica, acento secundario
+          'silver-vein': '#B0B5B9', // Solo para datos técnicos
+          'moss': '#4E5A3A',        // Vegetación de estrés (muy puntual)
+          'shadow': '#2B2E30',      // Profundidad mineral
+          'sky-accent': '#3A5F8C',  // Acento atmosférico (muy restringido)
         },
-        'marmato': {
-          'silver-vein': '#B0B5B9',
-          'moss': '#556B2F',
+        // ===== GUAINÍA (húmedo, profundo, reflectivo) =====
+        guainia: {
+          'bedrock': '#1E2326',           // Base granítica húmeda
+          'deep-water': '#1F3B3A',        // Agua profunda (acento principal)
+          'slow-water': '#2F5A4B',        // Transición fluvial
+          'vegetation': '#2E4A34',        // Selva no brillante
+          'reflection-warm': '#C47A4A',   // Reflejo atardecer (solo narrativo)
+          'mist': '#A6B3B8',              // Atmósfera, metadatos
+          'foam': '#E6E9EA',              // Espuma, alto contraste
         },
-        'trust': '#1A1C20',
-      },
-      fontFamily: {
-        'serif': ['"Cormorant Garamond"', 'Merriweather', 'serif'],
-        'sans': ['Inter', 'system-ui', 'sans-serif'],
+        // Los colores neutrales de Tailwind (stone, gray, etc.) se mantienen
       },
     },
   },

@@ -1,31 +1,19 @@
 ---
 import LayoutBase from '../layouts/LayoutBase.astro';
-import HeroSplit from '../components/HeroSplit.astro';
-import TrustBadges from '../components/TrustBadges.astro';
+import TrustBadges from '../components/shared/TrustBadges.astro';
+import TerritorySelector from '../components/shared/TerritorySelector.astro';
 ---
 
-<LayoutBase title="Inicio" description="Minería de origen sostenible en Guainía y Marmato, Colombia.">
-  <HeroSplit />
-  <TrustBadges />
-  
+<LayoutBase title="Inicio" description="Minería de origen sostenible en Guainía y Marmato, Colombia">
   <section class="max-w-7xl mx-auto px-4 py-16">
-    <div class="text-center mb-12">
-      <h2 class="font-serif text-3xl md:text-4xl mb-4">Del origen a la confianza</h2>
-      <p class="text-xl text-gray-400 max-w-3xl mx-auto">
-        Operamos directamente en los distritos mineros de Guainía y Marmato, aplicando prácticas sostenibles que respetan el entorno y las comunidades.
-      </p>
-    </div>
-    <div class="grid md:grid-cols-2 gap-8">
-      <div class="bg-stone-900 p-6 rounded-lg border-l-4 border-guinia-gold-matte">
-        <h3 class="font-serif text-2xl mb-3 text-guinia-gold-matte">Guainía – Oro Aluvial</h3>
-        <p class="text-gray-300">Métodos gravimétricos manuales, agua reciclada y restauración con especies nativas en menos de 6 meses.</p>
-        <a href="/origen-guainia" class="inline-block mt-4 text-guinia-gold-matte hover:underline">Conozca el proceso →</a>
-      </div>
-      <div class="bg-stone-900 p-6 rounded-lg border-l-4 border-marmato-silver-vein">
-        <h3 class="font-serif text-2xl mb-3 text-marmato-silver-vein">Marmato – Plata y Oro de Veta</h3>
-        <p class="text-gray-300">Minería subterránea artesanal, concentración gravimétrica sin cianuro y reforestación altoandina.</p>
-        <a href="/origen-marmato" class="inline-block mt-4 text-marmato-silver-vein hover:underline">Conozca el proceso →</a>
-      </div>
-    </div>
+    <h2 class="text-3xl font-bold text-center text-white mb-12">Nuestros territorios</h2>
+    <TerritorySelector 
+      territorios={[
+        {id: "guainia", nombre: "Guainía", material: "Oro Aluvial", imagenUrl: `${import.meta.env.BASE_URL}images/guainia/card-selector.jpg`},
+        {id: "marmato", nombre: "Marmato", material: "Plata y Oro de Veta", imagenUrl: `${import.meta.env.BASE_URL}images/marmato/card-selector.jpg`}
+      ]}
+    />
   </section>
+  
+  <TrustBadges />
 </LayoutBase>

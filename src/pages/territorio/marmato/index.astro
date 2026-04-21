@@ -1,0 +1,50 @@
+---
+import TerritoryLayout from '../../../components/territorio/TerritoryLayout.astro';
+import MarmatoHero from '../../../components/territorio/MarmatoHero.astro';
+import TerritoryContext from '../../../components/territorio/TerritoryContext.astro';
+import TerritoryMap from '../../../components/territorio/TerritoryMap.astro';
+import TerritoryArchive from '../../../components/territorio/TerritoryArchive.astro';
+import TrustBadges from '../../../components/shared/TrustBadges.astro';
+import GreenCarousel from '../../../components/GreenCarousel.astro';
+---
+
+<TerritoryLayout territorioId="marmato" active="territorio">
+  <div class="space-y-12">
+    <MarmatoHero 
+      titulo="Marmato" 
+      subtitulo="Plata y Oro de Veta Andina" 
+      imagenUrl={`${import.meta.env.BASE_URL}images/marmato/hero-background.jpg`}
+      descripcion="Minería subterránea selectiva. Reforestación altoandina."
+    />
+    
+    <div class="prose prose-invert prose-lg max-w-none">
+      <p>En las estribaciones de la Cordillera Central, a más de 1,500 metros de altura, seguimos vetas de cuarzo aurífero y argentífero con técnicas de arranque selectivo y mínima mecanización.</p>
+      <p>Nuestra planta de beneficio utiliza molienda local y concentración gravimétrica, sin reactivos químicos agresivos. Los residuos de roca se emplean en la rehabilitación de caminos veredales o se depositan en terrazas revegetadas.</p>
+    </div>
+
+    <TerritoryContext 
+      texto="Proceso verde: Socavón seguro con extracción manual y martillo neumático, manejo de estériles reutilizados en infraestructura local, y reforestación altoandina con frailejones y encenillos."
+      noticias={[
+        {titulo: "Inicia plan de reforestación", link: "#", fecha: "2025-04-10"},
+        {titulo: "Certificación de buenas prácticas", link: "#", fecha: "2025-03-22"}
+      ]}
+      tema="marmato"
+    />
+    
+    <section>
+      <h2 class="text-2xl font-bold text-marmato-clay mb-4">Nuestro proceso en imágenes</h2>
+      <GreenCarousel origen="marmato" />
+    </section>
+    
+    <TerritoryMap territorioId="marmato" />
+    
+    <TerritoryArchive 
+      documentos={[
+        {nombre: "Estudio geológico de vetas", año: "2024", tipo: "PDF", url: "#"},
+        {nombre: "Plan de manejo ambiental", año: "2023", tipo: "PDF", url: "#"}
+      ]}
+    />
+    
+    <TrustBadges />
+  </div>
+</TerritoryLayout>

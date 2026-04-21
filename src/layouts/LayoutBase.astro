@@ -1,12 +1,14 @@
 ---
 import '../styles/global.css';
+
 export interface Props {
   title: string;
   description?: string;
 }
 
 const { title, description = "Minería de origen sostenible en Guainía y Marmato" } = Astro.props;
-const base = Astro.base;
+let baseUrl = import.meta.env.BASE_URL;
+if (!baseUrl.endsWith('/')) baseUrl += '/';
 ---
 
 <!doctype html>
@@ -16,24 +18,25 @@ const base = Astro.base;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
     <title>{title} | Mina Origen</title>
-    <link rel="icon" type="image/svg+xml" href={`${base}/favicon.svg`} />
-    <!-- Tailwind CSS (se inyecta automáticamente vía PostCSS) -->
+    <link rel="icon" type="image/svg+xml" href={`${baseUrl}favicon.svg`} />
   </head>
-  <body class="bg-trust text-gray-200 font-sans antialiased">
+  <body class="bg-stone-950 text-gray-200 font-sans antialiased">
     <header class="border-b border-stone-700 py-4 px-4 md:px-8">
       <div class="max-w-7xl mx-auto flex justify-between items-center">
-        <a href={`${base}/`} class="font-serif text-2xl tracking-wide text-guinia-gold-matte">Mina<span class="text-marmato-silver-vein">Origen</span></a>
+        <a href={baseUrl} class="font-serif text-2xl tracking-wide text-guainia-reflection-warm">
+          Mina<span class="text-marmato-silver-vein">Origen</span>
+        </a>
         <nav class="space-x-6 text-sm">
-          <a href={`${base}/origen-guainia`} class="hover:text-guinia-gold-matte transition">Guainía</a>
-          <a href={`${base}/origen-marmato`} class="hover:text-marmato-silver-vein transition">Marmato</a>
-          <a href={`${base}/contacto`} class="hover:text-white transition">Contacto</a>
+          <a href={`${baseUrl}territorio/guainia/`} class="hover:text-guainia-reflection-warm transition">Guainía</a>
+          <a href={`${baseUrl}territorio/marmato/`} class="hover:text-marmato-silver-vein transition">Marmato</a>
+          <a href={`${baseUrl}contacto`} class="hover:text-white transition">Contacto</a>
         </nav>
       </div>
     </header>
     <main>
       <slot />
     </main>
-    <footer class="border-t border-stone-800 mt-20 py-8 px-4 text-center text-gray-500 text-sm">
+    <footer class="border-t border-stone-800 mt-20 py-8 px-4 text-center text-gray-400 text-sm">
       <div class="max-w-7xl mx-auto">
         <p>© 2026 Mina Origen. Operaciones sostenibles en Guainía y Marmato, Colombia.</p>
         <p class="mt-2 text-xs">Comprometidos con la minería artesanal responsable y la restauración ambiental.</p>

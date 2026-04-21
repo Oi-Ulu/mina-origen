@@ -1,0 +1,22 @@
+---
+import MaterialCard from './MaterialCard.astro';
+
+export interface Material {
+  nombre: string;
+  tipo: string;
+  imagenUrl: string;
+  origen: string;
+}
+export interface Props {
+  materiales: Material[];
+  tema: 'marmato' | 'guainia';
+  territorioId: 'guainia' | 'marmato';
+}
+const { materiales, tema, territorioId } = Astro.props;
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  {materiales.map(material => (
+    <MaterialCard material={material} tema={tema} territorioId={territorioId} />
+  ))}
+</div>

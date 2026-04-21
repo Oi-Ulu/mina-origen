@@ -1,0 +1,19 @@
+---
+import TerritoryLayout from '../../../components/territorio/TerritoryLayout.astro';
+import MaterialGallery from '../../../components/materiales/MaterialGallery.astro';
+---
+
+<TerritoryLayout territorioId="guainia" active="materiales">
+  <div>
+    <h2 class="text-2xl font-bold text-guainia-deep-water mb-6">Materiales y minerales</h2>
+    <MaterialGallery 
+      materiales={[
+        {nombre: "Oro aluvial", tipo: "Sedimento fluvial", imagenUrl: "/mina-origen/images/guainia/materiales/material-oro-aluvial.jpg", origen: "Guainía"},
+        {nombre: "Concentrado de oro", tipo: "Producto intermedio", imagenUrl: "/mina-origen/images/guainia/materiales/concentrado-oro.jpg", origen: "Guainía"},
+        {nombre: "Granito", tipo: "Roca de caja", imagenUrl: "/mina-origen/images/guainia/materiales/material-granito.jpg", origen: "Guainía"}
+      ]}
+      tema="guainia"
+      territorioId="guainia"
+    />
+  </div>
+</TerritoryLayout>

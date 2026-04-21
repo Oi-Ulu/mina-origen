@@ -1,0 +1,42 @@
+---
+import TerritoryLayout from '../../../components/territorio/TerritoryLayout.astro';
+import ProcessFlow from '../../../components/proceso/ProcessFlow.astro';
+import ProcessStageCard from '../../../components/proceso/ProcessStageCard.astro';
+---
+
+<TerritoryLayout territorioId="marmato" active="proceso">
+  <div class="space-y-8">
+    <h2 class="text-2xl font-bold text-marmato-clay">Proceso productivo</h2>
+    <ProcessFlow etapas={["Exploración", "Extracción selectiva", "Molienda", "Concentración gravimétrica", "Refinación"]} />
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
+      <ProcessStageCard 
+        etapa="Exploración"
+        descripcion="Identificación de vetas mediante mapeo geológico y muestreo de superficie. Se respetan áreas de conservación."
+        imagenUrl="/mina-origen/images/marmato/proceso/etapa-1.jpg"
+        tema="marmato"
+      />
+      <ProcessStageCard 
+        etapa="Extracción selectiva"
+        descripcion="Minería subterránea manual con chimeneas y tajeos, evitando la dilución del mineral. Uso de barrenos neumáticos."
+        imagenUrl="/mina-origen/images/marmato/proceso/etapa-2.jpg"
+        tema="marmato"
+      />
+      <ProcessStageCard 
+        etapa="Molienda"
+        descripcion="Trituración y molienda en seco o húmedo para liberar partículas de oro y plata."
+        tema="marmato"
+      />
+      <ProcessStageCard 
+        etapa="Concentración gravimétrica"
+        descripcion="Mesas vibratorias, ciclones y canaletas. No se utilizan reactivos químicos como cianuro o mercurio."
+        tema="marmato"
+      />
+      <ProcessStageCard 
+        etapa="Refinación"
+        descripcion="Fusión y obtención de doré (aleación oro-plata). Control de emisiones."
+        tema="marmato"
+      />
+    </div>
+  </div>
+</TerritoryLayout>

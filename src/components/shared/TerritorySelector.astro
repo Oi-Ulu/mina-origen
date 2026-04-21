@@ -1,0 +1,27 @@
+---
+export interface Territory {
+  id: 'guainia' | 'marmato';
+  nombre: string;
+  material: string;
+  imagenUrl: string;
+}
+export interface Props {
+  territorios: Territory[];
+}
+const { territorios } = Astro.props;
+let baseUrl = import.meta.env.BASE_URL;
+if (!baseUrl.endsWith('/')) baseUrl += '/';
+---
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto">
+  {territorios.map(territorio => (
+    <a href={`${baseUrl}territorio/${territorio.id}/`} class="group block bg-stone-900 rounded-lg overflow-hidden hover:shadow-xl transition-all">
+      <img src={territorio.imagenUrl} alt={territorio.nombre} class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" />
+      <div class="p-6">
+        <h3 class="text-2xl font-bold text-white">{territorio.nombre}</h3>
+        <p class="text-gray-400 mt-1">{territorio.material}</p>
+        <span class="inline-block mt-4 text-sm font-semibold text-guainia-mist group-hover:text-white transition-colors">Conozca el proceso →</span>
+      </div>
+    </a>
+  ))}
+</div>

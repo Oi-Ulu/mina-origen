@@ -1,0 +1,30 @@
+---
+import { contextTheme } from '../../lib/themes.js';
+
+export interface Props {
+  texto: string;
+  noticias?: Array<{titulo: string; link: string; fecha?: string}>;
+  tema: 'marmato' | 'guainia';
+}
+const { texto, noticias, tema } = Astro.props;
+const theme = contextTheme[tema];
+---
+
+<div class={`${theme.bg} ${theme.border} border rounded-lg p-5`}>
+  <p class="text-gray-800 leading-relaxed">{texto}</p>
+  {noticias && noticias.length > 0 && (
+    <div class="mt-4 pt-3 border-t border-stone-700">
+      <h4 class={`text-sm font-semibold ${theme.textTitle} mb-2`}>Noticias recientes</h4>
+      <ul class="space-y-1">
+        {noticias.map(noticia => (
+          <li>
+            <a href={noticia.link} class="text-sm text-gray-400 hover:text-white transition-colors">
+              {noticia.titulo}
+            </a>
+            {noticia.fecha && <span class="text-xs text-gray-500 ml-2">{noticia.fecha}</span>}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )}
+</div>
