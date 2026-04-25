@@ -6,7 +6,8 @@ export interface Props {
   descripcion?: string;
 }
 const { titulo, subtitulo, imagenUrl, descripcion } = Astro.props;
-const baseUrl = import.meta.env.BASE_URL;
+let baseUrl = import.meta.env.BASE_URL;
+if (!baseUrl.endsWith('/')) baseUrl += '/';
 // Asegurar que la imagenUrl sea absoluta (ya debería venir con base)
 const imgSrc = imagenUrl.startsWith('/') ? imagenUrl : `${baseUrl}${imagenUrl}`;
 ---
