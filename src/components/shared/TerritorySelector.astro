@@ -9,7 +9,7 @@ export interface Props {
   territorios: Territory[];
 }
 const { territorios } = Astro.props;
-let baseUrl = import.meta.env.BASE_URL;
+let baseUrl = import.meta.env.BASE_URL ?? '/';
 if (!baseUrl.endsWith('/')) baseUrl += '/';
 ---
 

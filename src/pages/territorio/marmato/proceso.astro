@@ -1,42 +1,217 @@
 ---
 import TerritoryLayout from '../../../components/territorio/TerritoryLayout.astro';
-import ProcessFlow from '../../../components/proceso/ProcessFlow.astro';
-import ProcessStageCard from '../../../components/proceso/ProcessStageCard.astro';
+const baseUrl = import.meta.env.BASE_URL;
+
+const etapas = [
+  {
+    nombre: "Exploración",
+    descripcion: "Identificación de vetas mediante mapeo geológico y muestreo de superficie. Se respetan áreas de conservación.",
+    imagenes: [
+      { src: `${baseUrl}images/marmato/proceso/etapa-exploracion-real.jpg`, tipo: "real", alt: "Geólogo tomando muestra", titulo: "Muestreo geológico" },
+      { src: `${baseUrl}images/marmato/proceso/etapa-exploracion-render.jpg`, tipo: "render", alt: "Diagrama de perfil", titulo: "Perfil de veta" }
+    ]
+  },
+  {
+    nombre: "Extracción selectiva",
+    descripcion: "Minería subterránea manual con chimeneas y tajeos, evitando la dilución del mineral. Uso de barrenos neumáticos.",
+    imagenes: []
+  },
+  {
+    nombre: "Molienda",
+    descripcion: "Trituración y molienda en seco o húmedo para liberar partículas de oro y plata.",
+    imagenes: [
+      { src: `${baseUrl}images/marmato/proceso/etapa-molienda-real.jpg`, tipo: "real", alt: "Molino de bolas", titulo: "Molino" },
+      { src: `${baseUrl}images/marmato/proceso/etapa-molienda-render.jpg`, tipo: "render", alt: "Corte de molino", titulo: "Esquema" }
+    ]
+  },
+  {
+    nombre: "Concentración gravimétrica",
+    descripcion: "Mesas vibratorias, ciclones y canaletas. No se utilizan reactivos químicos como cianuro o mercurio.",
+    imagenes: [
+      { src: `${baseUrl}images/marmato/proceso/etapa-concentracion-real.jpg`, tipo: "real", alt: "Mesa vibratoria", titulo: "Mesa" },
+      { src: `${baseUrl}images/marmato/proceso/etapa-concentracion-render.jpg`, tipo: "render", alt: "Esquema", titulo: "Diagrama" }
+    ]
+  },
+  {
+    nombre: "Cianuración (opcional)",
+    descripcion: "Proceso químico controlado para recuperar oro fino de relaves. Los residuos son neutralizados antes de ser dispuestos.",
+    imagenes: [
+      { src: `${baseUrl}images/marmato/proceso/etapa-cianuracion-real.jpg`, tipo: "real", alt: "Tanques de cianuración", titulo: "Cianuración" },
+      { src: `${baseUrl}images/marmato/proceso/etapa-cianuracion-render.jpg`, tipo: "render", alt: "Diagrama de flujo", titulo: "Flujo" }
+    ]
+  },
+  {
+    nombre: "Precipitación Merrill Crowe",
+    descripcion: "Recuperación de oro desde soluciones cianuradas mediante polvo de zinc. Produce un precipitado de alta ley.",
+    imagenes: [
+      { src: `${baseUrl}images/marmato/proceso/etapa-precipitacion-render.jpg`, tipo: "render", alt: "Esquema del proceso", titulo: "Merrill Crowe" }
+    ]
+  },
+  {
+    nombre: "Fundición y refinación",
+    descripcion: "Fusión del concentrado o precipitado para obtener lingotes de oro y plata (doré). Control de emisiones y calidad.",
+    imagenes: [
+      { src: `${baseUrl}images/marmato/proceso/etapa-fundicion-render.jpg`, tipo: "render", alt: "Horno de fundición", titulo: "Fundición" }
+    ]
+  }
+];
 ---
 
 <TerritoryLayout territorioId="marmato" active="proceso">
-  <div class="space-y-8">
+  <div class="space-y-6">
     <h2 class="text-2xl font-bold text-marmato-clay">Proceso productivo</h2>
-    <ProcessFlow etapas={["Exploración", "Extracción selectiva", "Molienda", "Concentración gravimétrica", "Refinación"]} />
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-      <ProcessStageCard 
-        etapa="Exploración"
-        descripcion="Identificación de vetas mediante mapeo geológico y muestreo de superficie. Se respetan áreas de conservación."
-        imagenUrl="/mina-origen/images/marmato/proceso/etapa-1.jpg"
-        tema="marmato"
-      />
-      <ProcessStageCard 
-        etapa="Extracción selectiva"
-        descripcion="Minería subterránea manual con chimeneas y tajeos, evitando la dilución del mineral. Uso de barrenos neumáticos."
-        imagenUrl="/mina-origen/images/marmato/proceso/etapa-2.jpg"
-        tema="marmato"
-      />
-      <ProcessStageCard 
-        etapa="Molienda"
-        descripcion="Trituración y molienda en seco o húmedo para liberar partículas de oro y plata."
-        tema="marmato"
-      />
-      <ProcessStageCard 
-        etapa="Concentración gravimétrica"
-        descripcion="Mesas vibratorias, ciclones y canaletas. No se utilizan reactivos químicos como cianuro o mercurio."
-        tema="marmato"
-      />
-      <ProcessStageCard 
-        etapa="Refinación"
-        descripcion="Fusión y obtención de doré (aleación oro-plata). Control de emisiones."
-        tema="marmato"
-      />
+    <div class="flex justify-between text-sm text-gray-400 border-b border-stone-700 pb-2 mb-4">
+      <span>← Navega por las etapas →</span>
+    </div>
+
+    <!-- Carrusel de etapas -->
+    <div class="relative">
+      <div id="processCarousel" class="flex overflow-x-auto snap-x snap-mandatory scroll-smooth gap-6 pb-6">
+        {etapas.map((etapa, idx) => (
+          <div
+            class="snap-center shrink-0 w-full md:w-5/6 lg:w-4/5 xl:w-3/4 bg-stone-900/50 rounded-xl border border-stone-800 p-6 cursor-pointer"
+            data-etapa={JSON.stringify({ nombre: etapa.nombre, descripcion: etapa.descripcion, imagenes: etapa.imagenes })}
+            onclick="openProcessModal(this)"
+          >
+            <h3 class="text-2xl font-bold text-marmato-clay mb-3">{etapa.nombre}</h3>
+            <p class="text-gray-200 mb-6 leading-relaxed">{etapa.descripcion}</p>
+            {etapa.imagenes && etapa.imagenes.length > 0 && (
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {etapa.imagenes.map(img => (
+                  <div class="bg-stone-800/40 rounded-lg p-3">
+                    <img src={img.src} alt={img.alt} class="w-full h-auto max-h-48 object-contain rounded" loading="lazy" />
+                    <p class="text-center text-xs text-gray-400 mt-2">
+                      {img.tipo === 'real' ? '📸 Real' : '🎨 Render'} • {img.titulo}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
+            <div class="text-right text-xs text-marmato-silver-vein mt-4">Etapa {idx+1} de {etapas.length}</div>
+          </div>
+        ))}
+      </div>
+      <button id="prevBtn" class="absolute left-0 top-1/2 -translate-y-1/2 bg-stone-800 hover:bg-stone-700 text-white rounded-full p-2 shadow-md transition-colors">❮</button>
+      <button id="nextBtn" class="absolute right-0 top-1/2 -translate-y-1/2 bg-stone-800 hover:bg-stone-700 text-white rounded-full p-2 shadow-md transition-colors">❯</button>
+    </div>
+
+    <div class="text-center text-sm text-gray-500 mt-4">Desliza o usa las flechas para ver más etapas</div>
+
+    <!-- Sección: Planta de beneficio integral -->
+    <div class="mt-16 pt-8 border-t border-stone-800">
+      <h3 class="text-2xl font-bold text-marmato-clay mb-4">Planta de beneficio integral</h3>
+      <p class="text-gray-300 mb-6">Conoce nuestras instalaciones y el diagrama completo del proceso de beneficio.</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="bg-stone-900/50 rounded-xl border border-stone-800 p-4 cursor-pointer transition hover:scale-105 hover:border-stone-600" data-plant-img={`${baseUrl}images/marmato/proceso-beneficio-diagrama.png`} data-plant-title="Diagrama de flujo del proceso de beneficio" onclick="openPlantModal(this)">
+          <img src={`${baseUrl}images/marmato/proceso-beneficio-diagrama.png`} alt="Diagrama de flujo" class="w-full h-auto rounded-lg mb-2" loading="lazy" />
+          <p class="text-center text-sm text-gray-300">📊 Diagrama de flujo del proceso</p>
+        </div>
+        <div class="bg-stone-900/50 rounded-xl border border-stone-800 p-4 cursor-pointer transition hover:scale-105 hover:border-stone-600" data-plant-img={`${baseUrl}images/marmato/planta-beneficio-diagrama.jpg`} data-plant-title="Diagrama de la planta de beneficio" onclick="openPlantModal(this)">
+          <img src={`${baseUrl}images/marmato/planta-beneficio-diagrama.jpg`} alt="Diagrama de planta" class="w-full h-auto rounded-lg mb-2" loading="lazy" />
+          <p class="text-center text-sm text-gray-300">🏭 Diagrama de planta</p>
+        </div>
+        <div class="bg-stone-900/50 rounded-xl border border-stone-800 p-4 cursor-pointer transition hover:scale-105 hover:border-stone-600" data-plant-img={`${baseUrl}images/marmato/planta-beneficio-render.jpg`} data-plant-title="Render 3D de la planta" onclick="openPlantModal(this)">
+          <img src={`${baseUrl}images/marmato/planta-beneficio-render.jpg`} alt="Render de planta" class="w-full h-auto rounded-lg mb-2" loading="lazy" />
+          <p class="text-center text-sm text-gray-300">🎨 Render 3D de la planta</p>
+        </div>
+        <div class="bg-stone-900/50 rounded-xl border border-stone-800 p-4 cursor-pointer transition hover:scale-105 hover:border-stone-600" data-plant-img={`${baseUrl}images/marmato/planta-beneficio-real.jpg`} data-plant-title="Fotografía real de la planta" onclick="openPlantModal(this)">
+          <img src={`${baseUrl}images/marmato/planta-beneficio-real.jpg`} alt="Planta real" class="w-full h-auto rounded-lg mb-2" loading="lazy" />
+          <p class="text-center text-sm text-gray-300">📸 Planta real</p>
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- Modal para etapas del proceso -->
+  <div id="processModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-sm transition-all duration-300" onclick="closeProcessModal()">
+    <div class="relative max-w-6xl w-full mx-4 bg-stone-900 rounded-xl overflow-hidden border border-stone-700 shadow-2xl max-h-[90vh] overflow-y-auto" onclick="event.stopPropagation()">
+      <button class="absolute top-4 right-4 text-gray-300 hover:text-white text-3xl p-2 z-10" onclick="closeProcessModal()">&times;</button>
+      <div class="p-6 md:p-8">
+        <h2 id="modalProcessTitle" class="text-3xl font-serif text-marmato-clay mb-4"></h2>
+        <p id="modalProcessDesc" class="text-gray-200 text-lg leading-relaxed mb-6"></p>
+        <div id="modalProcessImages" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para imágenes de la planta -->
+  <div id="plantModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 backdrop-blur-sm transition-all duration-300" onclick="closePlantModal()">
+    <div class="relative max-w-5xl w-full mx-4 bg-stone-900 rounded-xl overflow-hidden border border-stone-700 shadow-2xl" onclick="event.stopPropagation()">
+      <button class="absolute top-4 right-4 text-gray-300 hover:text-white text-3xl p-2 z-10" onclick="closePlantModal()">&times;</button>
+      <div class="p-4 flex flex-col items-center">
+        <h3 id="plantModalTitle" class="text-xl font-bold text-marmato-clay mb-4"></h3>
+        <img id="plantModalImage" src="" alt="Planta" class="max-w-full max-h-[80vh] object-contain rounded" />
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Funciones para el modal de proceso
+    window.openProcessModal = (cardElement) => {
+      const data = JSON.parse(cardElement.getAttribute('data-etapa'));
+      const modal = document.getElementById('processModal');
+      document.getElementById('modalProcessTitle').innerText = data.nombre;
+      document.getElementById('modalProcessDesc').innerText = data.descripcion;
+      const imagesContainer = document.getElementById('modalProcessImages');
+      imagesContainer.innerHTML = '';
+      if (data.imagenes && data.imagenes.length) {
+        data.imagenes.forEach(img => {
+          const div = document.createElement('div');
+          div.className = 'bg-stone-800/40 rounded-lg p-4';
+          div.innerHTML = `
+            <img src="${img.src}" alt="${img.alt}" class="w-full h-auto max-h-96 object-contain rounded mb-2" />
+            <p class="text-center text-sm text-gray-300">${img.tipo === 'real' ? '📸 Fotografía real' : '🎨 Render técnico'}<br><span class="text-xs text-gray-400">${img.titulo}</span></p>
+          `;
+          imagesContainer.appendChild(div);
+        });
+      } else {
+        imagesContainer.innerHTML = '<div class="col-span-full text-center text-gray-400 py-8">No hay imágenes disponibles para esta etapa.</div>';
+      }
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    };
+
+    window.closeProcessModal = () => {
+      const modal = document.getElementById('processModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    };
+
+    // Funciones para el modal de la planta
+    window.openPlantModal = (element) => {
+      const imgSrc = element.getAttribute('data-plant-img');
+      const title = element.getAttribute('data-plant-title');
+      const modal = document.getElementById('plantModal');
+      document.getElementById('plantModalImage').src = imgSrc;
+      document.getElementById('plantModalTitle').innerText = title;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    };
+
+    window.closePlantModal = () => {
+      const modal = document.getElementById('plantModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    };
+
+    // Navegación del carrusel
+    const carousel = document.getElementById('processCarousel');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    if (carousel && prevBtn && nextBtn) {
+      prevBtn.addEventListener('click', () => carousel.scrollBy({ left: -carousel.clientWidth * 0.8, behavior: 'smooth' }));
+      nextBtn.addEventListener('click', () => carousel.scrollBy({ left: carousel.clientWidth * 0.8, behavior: 'smooth' }));
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeProcessModal();
+        closePlantModal();
+      }
+    });
+  </script>
 </TerritoryLayout>

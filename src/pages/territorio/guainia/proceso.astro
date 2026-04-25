@@ -2,6 +2,8 @@
 import TerritoryLayout from '../../../components/territorio/TerritoryLayout.astro';
 import ProcessFlow from '../../../components/proceso/ProcessFlow.astro';
 import ProcessStageCard from '../../../components/proceso/ProcessStageCard.astro';
+
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <TerritoryLayout territorioId="guainia" active="proceso">
@@ -13,28 +15,31 @@ import ProcessStageCard from '../../../components/proceso/ProcessStageCard.astro
       <ProcessStageCard 
         etapa="Prospección"
         descripcion="Identificación de zonas con potencial aurífero mediante muestreo de sedimentos y geofísica somera."
-        imagenUrl="/mina-origen/images/guainia/proceso/etapa-1.jpg"
+        imagenUrl={`${baseUrl}images/guainia/proceso/etapa-prospeccion-real.jpg`}
         tema="guainia"
       />
       <ProcessStageCard 
         etapa="Extracción aluvial"
         descripcion="Extracción manual de gravas auríferas en riberas, utilizando bombas de succión de baja presión."
-        imagenUrl="/mina-origen/images/guainia/proceso/etapa-2.jpg"
+        imagenUrl={`${baseUrl}images/guainia/proceso/etapa-extraccion-aluvial-real.jpg`}
         tema="guainia"
       />
       <ProcessStageCard 
         etapa="Clasificación"
         descripcion="Cribado y lavado para separar partículas gruesas (estériles) de material fino con oro."
+        
         tema="guainia"
       />
       <ProcessStageCard 
         etapa="Concentración gravimétrica"
         descripcion="Uso de canaletas y mesas vibratorias para concentrar el oro por diferencia de densidad. Sin mercurio."
+        
         tema="guainia"
       />
       <ProcessStageCard 
         etapa="Refinado artesanal"
         descripcion="Fusión del concentrado con bórax para obtener oro puro (contenido > 95%)."
+        
         tema="guainia"
       />
     </div>

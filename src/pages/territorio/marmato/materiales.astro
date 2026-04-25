@@ -1,6 +1,8 @@
 ---
 import TerritoryLayout from '../../../components/territorio/TerritoryLayout.astro';
 import MaterialGallery from '../../../components/materiales/MaterialGallery.astro';
+
+const baseUrl = import.meta.env.BASE_URL;
 ---
 
 <TerritoryLayout territorioId="marmato" active="materiales">
@@ -8,9 +10,11 @@ import MaterialGallery from '../../../components/materiales/MaterialGallery.astr
     <h2 class="text-2xl font-bold text-marmato-clay mb-6">Materiales y minerales</h2>
     <MaterialGallery 
       materiales={[
-        {nombre: "Oro de veta", tipo: "Mineral primario", imagenUrl: "/mina-origen/images/marmato/materiales/material-oro-veta.jpg", origen: "Marmato"},
-        {nombre: "Plata nativa", tipo: "Mineral secundario", imagenUrl: "/mina-origen/images/marmato/materiales/material-plata.jpg", origen: "Marmato"},
-        {nombre: "Concentrado de oro", tipo: "Producto intermedio", imagenUrl: "/mina-origen/images/marmato/materiales/concentrado-oro.jpg", origen: "Marmato"}
+        {nombre: "Oro de veta", tipo: "Mineral primario", imagenUrl: `${baseUrl}images/marmato/materiales/material-oro-veta.jpg`, origen: "Marmato"},
+        {nombre: "Plata nativa", tipo: "Mineral secundario", imagenUrl: `${baseUrl}images/marmato/materiales/material-plata-nativa.jpg`, origen: "Marmato"},
+        {nombre: "Concentrado de oro", tipo: "Producto intermedio", imagenUrl: `${baseUrl}images/marmato/materiales/material-concentrado-oro.jpg`, origen: "Marmato"},
+        {nombre: "Concentrado de plata", tipo: "Producto intermedio", imagenUrl: `${baseUrl}images/marmato/materiales/material-concentrado-plata.jpg`, origen: "Marmato"},
+        {nombre: "Mineralización en roca", tipo: "Muestra geológica", imagenUrl: `${baseUrl}images/marmato/materiales/material-mineralizacion-real.jpg`, origen: "Marmato"}
       ]}
       tema="marmato"
       territorioId="marmato"

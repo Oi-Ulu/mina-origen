@@ -1,19 +1,73 @@
 ---
 import LayoutBase from '../layouts/LayoutBase.astro';
+import TrustBadges from '../components/shared/TrustBadges.astro';
 ---
 
-<LayoutBase title="Contacto" description="Comuníquese con nosotros para conocer más sobre nuestro oro y plata de origen.">
-  <div class="max-w-4xl mx-auto px-4 py-16 text-center">
-    <h1 class="font-serif text-4xl mb-6">Contacto</h1>
-    <p class="text-xl text-gray-400 mb-12">Estamos ubicados en los distritos mineros de Guainía y Caldas, Colombia.</p>
-    
-    <div class="bg-stone-900 p-8 rounded-lg inline-block text-left">
-      <p class="mb-4"><span class="font-bold">📞 Teléfono:</span> +57 300 123 4567</p>
-      <p class="mb-4"><span class="font-bold">✉️ Correo:</span> contacto@minaorigen.com</p>
-      <p class="mb-6"><span class="font-bold">📍 Oficina principal:</span> Calle 123 #45-67, Bogotá (citas previas)</p>
-      <a href="https://wa.me/573057077923" class="inline-block bg-guinia-gold-matte text-black font-bold py-3 px-6 rounded hover:bg-opacity-80 transition">
-        Enviar mensaje por WhatsApp
-      </a>
+<LayoutBase title="Modelo de negocio" description="Compra de futuros de oro y plata de origen minero sostenible">
+  <div class="max-w-4xl mx-auto px-4 py-12">
+    <div class="text-center mb-12">
+      <h1 class="text-4xl md:text-5xl font-serif text-marmato-clay mb-4">Modelo de negocio</h1>
+      <p class="text-xl text-gray-300">Compra de futuros de oro y plata de origen</p>
+      <div class="w-24 h-0.5 bg-marmato-clay mx-auto mt-4"></div>
+    </div>
+
+    <div class="prose prose-invert prose-lg max-w-none">
+      <p class="lead">Invertimos en el futuro de la minería sostenible. Nuestro modelo permite a compradores internacionales y nacionales asegurar metales preciosos con trazabilidad total, apoyando directamente a los pequeños productores de Marmato y Guainía.</p>
+      
+      <h2>¿Cómo funciona?</h2>
+      <p>El comprador firma un contrato de futuros por una cantidad específica de oro o plata. El precio se fija en el momento del acuerdo según el promedio semanal de cotización del <strong>Banco de la República de Colombia</strong> (TRM y precio internacional del metal).</p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+        <div class="bg-stone-900/50 rounded-xl p-6 text-center border border-stone-800">
+          <div class="text-4xl mb-3">📝</div>
+          <h3 class="text-xl font-bold text-marmato-clay">1. Contrato</h3>
+          <p class="text-gray-300 text-sm">Se define el metal, cantidad, plazo y precio base (promedio semanal del Banco de la República).</p>
+        </div>
+        <div class="bg-stone-900/50 rounded-xl p-6 text-center border border-stone-800">
+          <div class="text-4xl mb-3">💰</div>
+          <h3 class="text-xl font-bold text-marmato-clay">2. Pago adelantado</h3>
+          <p class="text-gray-300 text-sm">El comprador paga un porcentaje (entre 30% y 60%) del valor total. Permite financiar la producción sostenible.</p>
+        </div>
+        <div class="bg-stone-900/50 rounded-xl p-6 text-center border border-stone-800">
+          <div class="text-4xl mb-3">⚖️</div>
+          <h3 class="text-xl font-bold text-marmato-clay">3. Liquidación final</h3>
+          <p class="text-gray-300 text-sm">A los 30-45 días, cuando el metal está listo, se paga el saldo y se procede a la fundición y entrega.</p>
+        </div>
+      </div>
+
+      <h2>Ajuste de precio</h2>
+      <p>El valor del contrato se calcula usando el <strong>precio promedio de cierre de la semana anterior a la firma</strong>, tanto para el oro como para la plata, según las cotizaciones oficiales del Banco de la República (referencia London Fix). Este mecanismo garantiza transparencia y justicia para ambas partes.</p>
+      
+      <div class="bg-stone-800/40 rounded-lg p-5 my-6 border-l-4 border-marmato-clay">
+        <p class="italic text-gray-200">"El precio base se ajusta semanalmente al promedio de los últimos 5 días hábiles. Así el comprador no especula y el productor recibe un valor justo por su trabajo."</p>
+      </div>
+
+      <h2>Especificaciones del contrato</h2>
+      <ul>
+        <li><strong>Metales disponibles:</strong> Oro de veta (Marmato), Oro aluvial (Guainía), Plata nativa.</li>
+        <li><strong>Unidades mínimas:</strong> 10g de oro / 30g de plata.</li>
+        <li><strong>Plazo de entrega:</strong> 30 a 45 días después de la firma.</li>
+        <li><strong>Fundición:</strong> Realizada en planta propia con estándares de pureza (oro mínimo 22K, plata mínima 999).</li>
+        <li><strong>Trazabilidad:</strong> Cada lote incluye certificado de origen, análisis químico y cadena de custodia.</li>
+      </ul>
+
+      <h2>Ventajas para el comprador</h2>
+      <ul>
+        <li>✅ Precio asegurado en un mercado volátil.</li>
+        <li>✅ Metal físico con origen verificable (minería sostenible).</li>
+        <li>✅ Contratos flexibles en cantidad y plazo.</li>
+        <li>✅ Apoyo directo a comunidades mineras artesanales.</li>
+      </ul>
+
+      <div class="text-center mt-12 p-6 bg-stone-900/30 rounded-xl border border-stone-700">
+        <p class="text-gray-300 mb-2">¿Interesado en adquirir futuros de oro o plata de origen?</p>
+        <p class="text-sm text-gray-400">Para más información, escríbenos a <span class="text-marmato-clay">comercial@minaorigen.co</span> (próximamente disponible).</p>
+        <p class="text-xs text-gray-500 mt-3">Este sitio es meramente informativo. Los contratos se formalizan mediante acuerdos privados.</p>
+      </div>
+    </div>
+
+    <div class="mt-12">
+      <TrustBadges />
     </div>
   </div>
 </LayoutBase>
